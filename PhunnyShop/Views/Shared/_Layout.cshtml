@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    Neste ficheiro colocamos todos os elementos comuns a todas as páginas.
+    É como se fosse um construtor. Desta forma evitamos repetir código.
+
+    @RenderBody() é onde será renderizado o conteúdo das páginas.
+-->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,10 +27,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Category" asp-action="Index">Categories</a>
                         </li>
                     </ul>
                 </div>
