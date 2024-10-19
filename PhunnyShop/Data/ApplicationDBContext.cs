@@ -42,6 +42,9 @@ namespace PhunnyShop.Data
 
         public DbSet<Category> Categories { get; set; }  // Category é o nosso ficheiro 'Category.cs'. 'Categories' será o nome da tabela.
 
+        public DbSet<Subscription> Subscriptions { get; set; }  // Criar a Tabela Subscriptions.
+
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
@@ -49,6 +52,7 @@ namespace PhunnyShop.Data
                 new Category { CategoryId = 2, Name = "Comedy", DisplayOrder = 2 },
                 new Category { CategoryId = 3, Name = "Horror", DisplayOrder = 3 }
                 );
-        }
+		}
+        */
     }
 }
