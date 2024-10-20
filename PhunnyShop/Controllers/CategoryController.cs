@@ -28,5 +28,30 @@ namespace PhunnyShop.Controllers
 
             return View(objCategoryList);  // Passamos o objecto para a view.
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+		/*
+         * Ao receber um POST executamos o método.
+         * Nota que o utilizamos o mesmo método 'Create', com um objeto to tipo 'Category' chamado 'obj'.
+         * Definimos as alterações que queremos fazer. Neste caso adicionar um registo que chega pelo método POST.
+         * Usamos a função .Add() para adicionar o Objecto 'Category' às alterações.
+         * Executamos as alterações com a função .SaveChanges().
+         * Redirecionamos para uma página com o método RedirectToAction().
+         * No Método de Redirect mencionamos o Método para onde queremos ir (Neste caso, 'Index') e o Controlador de seguida ('Category').
+         * Como estamos no mesmo controlador não precisamos de o mencionar, mas para servir de exemplo, fica explicito.
+         */
+
+		[HttpPost]
+        public IActionResult Create(Category obj)
+		{
+            _db.Categories.Add(obj);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index", "Category");
+        }
     }
 }

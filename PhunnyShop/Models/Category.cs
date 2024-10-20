@@ -4,6 +4,7 @@
  * Neste caso, temos 'Id', 'Name' e 'DisplayOrder'.
  */
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
@@ -13,8 +14,10 @@ namespace PhunnyShop.Models
     {
         [Key]  // Data Annotation. Definimos que a propriedade abaixo será a Primary Key. Neste caso, 'Id'.
         public int CategoryId { get; set; }
+        [DisplayName("Category Name")]
         [Required]
         public string Name { get; set; }
+        [DisplayName("Display Order")]
         public int DisplayOrder { get; set; }
     }
 }
