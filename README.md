@@ -7,6 +7,10 @@ README FILE
  * Para a utilização desta Webapp é necessário uma base de dados SQL Server.
  * Download SQL Server e criar uma base de dados local.
  * As informações de conexão à BD são introduzidas em 'appsettings.json' na linha 'DefaultConnection'.
+
+ * #### Atualizar ConnectionStrings
+ * 1º - Abrir appsetings.json
+ * 2º - Editar DefaultConnection Server
  * 
  * #### CRIAR/ATUALIZAR BASE DE DADOS
  * 1º - Tools > Manage NuGet Packages > Console
