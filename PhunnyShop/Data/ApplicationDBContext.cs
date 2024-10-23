@@ -9,12 +9,14 @@
  * 
  */
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PhunnyShop.Models;  // Import nos Models para os utilizar nos 'DbSet'.
 
 namespace PhunnyShop.Data
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : IdentityDbContext
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
@@ -23,5 +25,11 @@ namespace PhunnyShop.Data
 
         public DbSet<Category> Categories { get; set; }  // Category é o nosso ficheiro 'Category.cs'. 'Categories' será o nome da tabela.
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Override
+        }
     }
 }
