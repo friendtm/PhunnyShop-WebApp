@@ -1,0 +1,43 @@
+﻿<div class="container">
+	<div class="row pt-4 mb-2">
+		<div class="col-6">
+			<h2 class="text-primary">EQUIPAMENTOS EM LOJA</h2>
+		</div>
+		<div class="col-6 text-end">
+            <a class="btn btn-outline-primary" asp-controller="User" asp-action="History"><i class="bi bi-eye"></i> Ver Histórico</a>
+            <a class="btn btn-outline-danger" asp-controller="User" asp-action="Subscriptions"><i class="bi bi-cash-stack"></i> Subscrições</a>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Equipamento</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>Iphone 13 Pro</td>
+                <td>Em Espera</td>
+                <td><a class="text-decoration-none" asp-controller="" asp-action=""><i class="bi bi-eye"></i> Detalhes</a></td>
+            </tr>
+            <tr>
+                <th scope="row">ID</th>
+                <td>Xiaomi Redmi Coiso</td>
+                <td>Em Reparação</td>
+                <td><a class="text-decoration-none" asp-controller="" asp-action=""><i class="bi bi-eye"></i> Detalhes</a></td>
+            </tr>
+            <tr>
+                <th scope="row">ID</th>
+                <td>Samsung A13</td>
+                <td>Concluido</td>
+                <td><a class="text-decoration-none" asp-controller="" asp-action=""><i class="bi bi-eye"></i> Detalhes</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

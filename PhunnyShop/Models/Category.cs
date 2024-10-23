@@ -15,9 +15,11 @@ namespace PhunnyShop.Models
         [Key]  // Data Annotation. Definimos que a propriedade abaixo será a Primary Key. Neste caso, 'Id'.
         public int CategoryId { get; set; }
         [DisplayName("Category Name")]
+        [MaxLength(30)]
         [Required]
         public string Name { get; set; }
         [DisplayName("Display Order")]
+        [Range(1, 100)]
         public int DisplayOrder { get; set; }
     }
 }
