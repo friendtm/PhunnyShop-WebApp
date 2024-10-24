@@ -31,11 +31,23 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">Account/Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Category" asp-action="Index">Categories</a>
+                            <a class="nav-link" asp-controller="User" asp-action="Index">UserPanel</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form asp-controller="Account" asp-action="Logout" method="POST" class="form-inline">
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
