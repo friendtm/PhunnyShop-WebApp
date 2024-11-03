@@ -1,4 +1,4 @@
-﻿/*
+    /*
  * Responsável pelos Users.
  * Aqui é onde está a Lógica de Registo, Login e Logout.
  * Campos adicionais para o User devem ser criados em Models/ApplicationUser.cs
@@ -83,3 +83,4 @@ namespace PhunnyShop.Controllers
         }
     }
 }
+
