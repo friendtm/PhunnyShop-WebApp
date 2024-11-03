@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Neste ficheiro colocamos todos os elementos comuns a todas as páginas.
     É como se fosse um construtor. Desta forma evitamos repetir código.
 
@@ -36,11 +36,15 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="User" asp-action="Index">UserPanel</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (       User.Identity.IsAuthenticated)
                         {
-                            <form asp-controller="Account" asp-action="Logout" method="POST" class="form-inline">
-                                <button type="submit" class="btn btn-link nav-link">Logout</button>
-                            </form>
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="POST" class="form-inline">
+                                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                </form>
+                            </li>
                         }
                         else
                         {
