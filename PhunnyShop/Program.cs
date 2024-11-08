@@ -2,8 +2,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PhunnyShop.Data;
 using PhunnyShop.Models;
+using PhunnyShop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<UserService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,7 +26,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Account/Login";  // Redirects to the login page if not authenticated
+    options.LoginPath = "/Account/LoginRegister";  // Redirects to the login page if not authenticated
 });
 
 var app = builder.Build();

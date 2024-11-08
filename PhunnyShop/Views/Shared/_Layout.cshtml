@@ -4,7 +4,6 @@
 
     RenderBody é onde será renderizado o conteúdo das páginas.
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,20 +36,26 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="User" asp-action="Index">Area Cliente</a>
+                                <a class="nav-link" asp-controller="Account"
+                                   asp-action="Profile"
+                                   asp-route-email="@User.Identity.Name"
+                                   class="btn btn-primary">
+                                    Profile
+                                </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">Área Cliente</a>
+                            </li>
+
                             <form asp-controller="Account" asp-action="Logout" method="POST" class="form-inline">
                                 <button type="submit" class="btn btn-link nav-link">Logout</button>
                             </form>
                         }
                         else
                         {
-                            
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="LoginRegister">Criar Conta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="LoginRegister">Login</a>
+                                <a class="nav-link" asp-controller="Account" asp-action="LoginRegister">Login/Registo</a>
                             </li>
                         }
                     </ul>

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PhunnyShop.Models;
+using PhunnyShop.Services;
 using System.Threading.Tasks;
 
 namespace PhunnyShop.Controllers
@@ -17,11 +18,46 @@ namespace PhunnyShop.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserService _userService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, UserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
+        }
+
+        // This action will be accessible only to logged-in users
+        [Authorize]
+        public IActionResult Index()
+        {
+            // You can access the current user info using User.Identity.Name or User.FindFirst()
+            var currentUser = User.Identity.Name;
+
+            return View();
+        }
+
+        // This action will render a personal page based on the username (e.g., /xxxx, /yyyy)
+        [Authorize]
+        [HttpGet]
+        [Route("Account/Profile/{email}")]
+        public IActionResult Profile(string email)
+        {
+            if (email != User.Identity.Name)
+            {
+                return Forbid(); // If the user tries to access someone else's profile, deny access
+            }
+
+            // Fetch user data using ApplicationUser
+            var userData = _userService.GetUserDataByEmail(email);
+
+            if (userData == null)
+            {
+                return NotFound(); // If no user found, return 404 Not Found
+            }
+
+            // Pass ApplicationUser data to the view
+            return View(userData);
         }
 
         // GET: Displays the combined Login and Register view
