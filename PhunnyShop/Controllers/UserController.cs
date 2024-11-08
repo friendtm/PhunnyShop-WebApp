@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhunnyShop.Data;
 using PhunnyShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PhunnyShop.Controllers
 {
+    [Authorize]
 	public class UserController : Controller
 	{
         public IActionResult Index()

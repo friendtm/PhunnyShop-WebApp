@@ -1,10 +1,4 @@
-﻿/*
- * Responsável pelos Users.
- * Aqui é onde está a Lógica de Registo, Login e Logout.
- * Campos adicionais para o User devem ser criados em Models/ApplicationUser.cs
- * Não esquecer de dar update no método Register.
- */
-
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PhunnyShop.Models;
@@ -23,63 +17,86 @@ namespace PhunnyShop.Controllers
             _signInManager = signInManager;
         }
 
-        // Registration
+        // GET: Displays the combined Login and Register view
         [HttpGet]
-        public IActionResult Register() => View();
-
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public IActionResult LoginRegister()
         {
-            if (ModelState.IsValid)
+            var model = new LoginRegisterView
             {
-                var user = new ApplicationUser 
-                {
-                    UserName = model.Email, 
-                    Email = model.Email, 
-                    Contact = model.Contact, 
-                    DateOfBirth = model.DateOfBirth,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-            }
+                RegisterModel = new RegisterViewModel(),
+                LoginModel = new LoginViewModel()
+            };
+
             return View(model);
         }
 
-        // Login
-        [HttpGet]
-        public IActionResult Login() => View();
-
+        // POST: Handles registration
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Register(LoginRegisterView model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                // Return the combined view if the model state is invalid
+                return View("LoginRegister", model);
             }
-            return View(model);
+
+            var user = new ApplicationUser
+            {
+                FirstName = model.RegisterModel.FirstName,
+                LastName = model.RegisterModel.LastName,
+                Contact = model.RegisterModel.Contact,
+                Email = model.RegisterModel.Email,
+                UserName = model.RegisterModel.Email // Ensure UserName is set
+            };
+
+            var result = await _userManager.CreateAsync(user, model.RegisterModel.Password);
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index", "User"); // Redirect to a new action on success
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            // Return the view with errors if registration fails
+            return View("LoginRegister", model);
         }
 
-        // Logout
+        // POST: Handles login
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginRegisterView model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Return the combined view if model state is invalid
+                return View("LoginRegister", model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(
+                model.LoginModel.Email,
+                model.LoginModel.Password,
+                model.LoginModel.RememberMe,
+                lockoutOnFailure: false
+            );
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "User"); // Redirect to a new action on success
+            }
+
+            TempData["ErrorMessage"] = "Login inválido. Verifica as credenciais.";
+            return View("LoginRegister", model);
+        }
+
+        // POST: Handles logout
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("LoginRegister", "Account");
         }
     }
 }

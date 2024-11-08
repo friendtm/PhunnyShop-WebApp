@@ -1,0 +1,157 @@
+﻿@model PhunnyShop.Models.LoginRegisterView
+
+<!--
+<div class="container">
+    <form asp-action="Login" method="post">
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email"/>
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="RememberMe"></label>
+            <input asp-for="RememberMe" type="checkbox" />
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+</div> -->
+
+<!-- Pills navs -->
+<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="tab-login" data-bs-toggle="pill" data-mdb-pill-init href="#pills-login" role="tab"
+           aria-controls="pills-login" aria-selected="true">Login</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="tab-register" data-bs-toggle="pill" data-mdb-pill-init href="#pills-register" role="tab"
+           aria-controls="pills-register" aria-selected="false">Criar Conta</a>
+    </li>
+</ul>
+<!-- Pills navs -->
+
+<!-- Pills content -->
+<div class="tab-content">
+    <!-- Login -->
+    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form asp-action="Login" method="post">
+            <hr />
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input class="form-control" asp-for="@Model.LoginModel.Email" placeholder="Email"/>
+                <!-- <label class="form-label" asp-for="Email">Email</label> -->
+            </div>
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input class="form-control" asp-for="@Model.LoginModel.Password" type="password" placeholder="Password" />
+                <!-- <label class="form-label" asp-for="Password">Password</label> -->
+            </div>
+
+            <!-- 2 column grid layout -->
+            <div class="row mb-4">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check mb-3 mb-md-0">
+                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-center">
+                    <!-- Simple link -->
+                    <p>Ainda não és membro? <a href="#!">Criar conta</a></p>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Login</button>
+        </form>
+    </div>
+
+    <!-- Register -->
+    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <!-- First Name input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.RegisterModel.FirstName">First Name</label>
+                <input class="form-control" asp-for="@Model.RegisterModel.FirstName" />
+                <span asp-validation-for="@Model.RegisterModel.FirstName"></span>
+            </div>
+
+            <!-- Last Name input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.RegisterModel.LastName">Last Name</label>
+                <input class="form-control" asp-for="@Model.RegisterModel.LastName" />
+                <span asp-validation-for="@Model.RegisterModel.LastName"></span>
+            </div>
+
+            <!-- Contact input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.RegisterModel.Contact">Phone</label>
+                <input class="form-control" asp-for="@Model.RegisterModel.Contact" />
+                <span asp-validation-for="@Model.RegisterModel.Contact"></span>
+            </div>
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.RegisterModel.Email">Email</label>
+                <input class="form-control" asp-for="@Model.RegisterModel.Email" />
+                <span asp-validation-for="@Model.RegisterModel.Email"></span>
+            </div>
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.RegisterModel.Password">Password</label>
+                <input class="form-control" asp-for="@Model.RegisterModel.Password" />
+                <span asp-validation-for="@Model.RegisterModel.Password"></span>
+            </div>
+
+            <!-- Repeat Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.RegisterModel.ConfirmPassword">Repeat Password</label>
+                <input class="form-control" asp-for="@Model.RegisterModel.ConfirmPassword" />
+                <span asp-validation-for="@Model.RegisterModel.ConfirmPassword"></span>
+            </div>
+
+            <!-- Checkbox 
+            <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                       aria-describedby="registerCheckHelpText" />
+                <label class="form-check-label" for="registerCheck">
+                    I have read and agree to the terms
+                </label>
+            </div> -->
+
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-3">Registar</button>
+        </form>
+    </div>
+</div>
+<!-- Pills content -->
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Get the error message from TempData
+            var errorMessage = '@TempData["ErrorMessage"]';
+
+            // Check if there's an error message
+            if (errorMessage) {
+                // Display the error using Toastr
+                toastr.error(errorMessage, 'Notificação', {
+                    closeButton: true,             // Option to close
+                    progressBar: false,             // Show progress bar
+                    positionClass: 'toast-top-right',  // Position of the toastr
+                    timeOut: 5000                  // Auto close after 5 seconds
+                });
+            }
+        });
+    </script>
+}
