@@ -1,4 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+    /*
+ * Responsável pelos Users.
+ * Aqui é onde está a Lógica de Registo, Login e Logout.
+ * Campos adicionais para o User devem ser criados em Models/ApplicationUser.cs
+ * Não esquecer de dar update no método Register.
+ */
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PhunnyShop.Models;
@@ -100,3 +107,4 @@ namespace PhunnyShop.Controllers
         }
     }
 }
+

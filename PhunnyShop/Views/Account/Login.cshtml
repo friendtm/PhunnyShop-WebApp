@@ -1,0 +1,113 @@
+@model LoginViewModel
+
+@{
+    Layout = "_Layout"; 
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+       
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto; 
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .login-container h2 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+            }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+            .form-group label {
+                font-size: 0.9rem;
+                color: #666;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="password"] {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 1rem;
+                transition: border-color 0.3s;
+            }
+
+            .form-group input:focus {
+                outline: none;
+                border-color: #007bff;
+            }
+
+            .form-group span {
+                color: red;
+                font-size: 0.85rem;
+                display: block;
+                margin-top: 5px;
+            }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            background-color: #000; 
+            color: #fff; 
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .login-btn:hover {
+                background-color: #444; 
+            }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+            .remember-me input {
+                margin-right: 5px;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form asp-action="Login" method="post">
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="text" placeholder="Digite o seu email" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Senha</label>
+                <input asp-for="Password" type="password" placeholder="Digite a sua senha" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="form-group remember-me">
+                <input asp-for="RememberMe" type="checkbox" />
+                <label asp-for="RememberMe">Lembrar-me</label>
+            </div>
+            <button type="submit" class="login-btn">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>
