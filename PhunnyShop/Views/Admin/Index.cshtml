@@ -1,0 +1,57 @@
+﻿@model List<EquipmentRepair>
+
+<div class="container">
+	<div class="row pt-4 mb-2">
+		<div class="col-6">
+			<h2 class="text-primary">Reparações</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a class="btn btn-primary" asp-controller="Admin" asp-action="Create"><i class="bi bi-plus-circle"></i> Criar Novo</a>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<table class="table table-bordered table-striped">
+		<thead>
+		<tr>
+			<th>
+				ID
+			</th>
+			<th>
+				Marca
+			</th>
+			<th>
+				Modelo
+			</th>
+			<th>
+				User
+			</th>
+			<th>
+				Data Inicio
+			</th>
+			<th>
+				Status
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+			@foreach (var repair in Model)
+			{
+				<tr>
+					<td>@repair.Id</td>
+					<td>@repair.Name</td>
+					<td>@repair.Model</td>
+					<td>@repair.User?.FirstName @repair.User?.LastName</td> <!-- Display the user's first and last name -->
+					<td>@repair.RepairStart</td>
+					<td>
+						<!-- Button to redirect to ChangeStatus view -->
+						<a href="@Url.Action("ChangeStatus", "Admin", new { id = repair.Id })" class="btn btn-secondary">
+							@repair.Status
+						</a>
+						</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

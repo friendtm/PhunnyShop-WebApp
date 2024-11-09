@@ -13,5 +13,7 @@ namespace PhunnyShop.Models
         // public DateTime DateOfBirth { get; set; }
         public string Contact { get; set; }
 
+        public ICollection<EquipmentRepair> EquipmentRepairs { get; set; }
+        public ICollection<RepairHistory> RepairsHistory { get; set; }
     }
 }

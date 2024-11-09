@@ -1,0 +1,35 @@
+﻿@model PhunnyShop.Models.Account.UserEquipmentView
+
+<form method="POST">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Criar Reparação</h2>
+			<hr />
+		</div>
+		<div class="mb-3 row p-1">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3 row p-1">
+			<label asp-for="Model"></label>
+			<input asp-for="Model" class="form-control" />
+			<span asp-validation-for="Model" class="text-danger"></span>
+		</div>
+		<div class="mb-3 row p-1">
+			<label asp-for="UserId"></label>
+			<select asp-for="UserId" asp-items="Model.Users" class="form-control">
+				<option value="">Selecionar User</option>
+			</select>
+			<span asp-validation-for="UserId" class="text-danger"></span>
+		</div>
+		<div class="row">
+			<div class="col-6 col-md-3">  <!-- Se o ecrão for menor que 'Medium' ele assume 6 Colunas (col-6) -->
+				<button type="submit" class="btn btn-outline-primary form-control">Create</button>
+			</div>
+			<div class="col-6 col-md-3">
+				<a asp-controller="Admin" asp-action="Index" class="btn btn-outline-danger form-control">Return</a>
+			</div>
+		</div>
+	</div>
+</form>
