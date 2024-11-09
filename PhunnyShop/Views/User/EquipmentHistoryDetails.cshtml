@@ -1,0 +1,26 @@
+﻿@model PhunnyShop.Models.EquipmentViews.EquipmentHistoryDetailsView
+
+<h2>Equipment Repair Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h3>REPARAÇÃO</h3>
+        <p><strong>ID:</strong> @Model.RepairId</p>
+        <p><strong>Marca:</strong> @Model.EquipmentName</p>
+        <p><strong>Modelo:</strong> @Model.EquipmentModel</p>
+        <p><strong>Estado:</strong> @Model.Status</p>
+        <p><strong>Inicio de Reparação:</strong> @Model.RepairStart.ToString("g")</p>
+        <p><strong>Fim de Reparação:</strong> @(Model.RepairFinish?.ToString("g") ?? "...")</p>
+        <p><strong>Descrição:</strong> @Model.Description</p>
+    </div>
+    <hr />
+    <div class="card-body">
+        <h3>CLIENTE</h3>
+        <p><strong>Email:</strong> @Model.UserEmail</p>
+        <p><strong>Nome:</strong> @Model.UserFirstName</p>
+        <p><strong>Apelido:</strong> @Model.UserLastName</p>
+        <p><strong>Contact:</strong> @Model.UserContact</p>
+    </div>
+</div>
+<br />
+<a class="btn btn-outline-primary" asp-controller="User" asp-action="History" asp-route-email="@User.Identity.Name"><i class="bi bi-chevron-double-left"></i> Voltar</a>

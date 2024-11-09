@@ -33,7 +33,8 @@ namespace PhunnyShop.Services
                     Model = equipmentRepair.Model,
                     RepairStart = equipmentRepair.RepairStart,
                     RepairFinish = DateTime.Now,
-                    Status = equipmentRepair.Status
+                    Status = equipmentRepair.Status,
+                    Description = equipmentRepair.Description
                 };
 
                 _context.RepairsHistory.Add(historyEntry);
@@ -55,7 +56,8 @@ namespace PhunnyShop.Services
                     Name = historyEntry.Name,
                     Model = historyEntry.Model,
                     RepairStart = historyEntry.RepairStart,
-                    Status = "Em Andamento"  // Reset status as needed
+                    Status = "Em Andamento",  // Reset status as needed
+                    Description = historyEntry.Description
                 };
 
                 _context.EquipmentRepairs.Add(equipmentRepair);

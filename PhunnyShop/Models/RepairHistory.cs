@@ -11,5 +11,6 @@
         public DateTime RepairStart { get; set; }
         public DateTime RepairFinish { get; set; }
         public string Status { get; set; }
+        public string Description { get; set; }
     }
 }

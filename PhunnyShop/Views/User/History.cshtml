@@ -1,39 +1,45 @@
-﻿<div class="container">
+﻿@model PhunnyShop.Models.EquipmentViews.UserRepairHistoryView
+
+<div class="container">
     <div class="row pt-4 mb-2">
         <div class="col-6">
             <h2 class="text-primary">HISTÓRICO DE REPARAÇÕES</h2>
         </div>
         <div class="col-6 text-end">
-            <a class="btn btn-outline-primary" asp-controller="User" asp-action="Index"><i class="bi bi-chevron-double-left"></i> Voltar</a>
+            <a class="btn btn-outline-primary" asp-controller="User" asp-action="Index" asp-route-email="@User.Identity.Name"><i class="bi bi-chevron-double-left"></i> Voltar</a>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <table class="table table-hover">
+    <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Equipamento</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Modelo</th>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Data Entrada</th>
+                <th>Data Saida</th>
+                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">ID</th>
-                <td>Telemovel</td>
-                <td>Huawei</td>
-                <td>Pura 70 Ultra</td>
-                <td><a class="text-decoration-none" asp-controller="" asp-action=""><i class="bi bi-eye"></i> Detalhes</a></td>
-            </tr>
-            <tr>
-                <th scope="row">ID</th>
-                <td>Tablet</td>
-                <td>Asus</td>
-                <td>Zenpad 10</td>
-                <td><a class="text-decoration-none" asp-controller="" asp-action=""><i class="bi bi-eye"></i> Detalhes</a></td>
-            </tr>
+            @foreach (var history in Model.RepairHistoryEntries)
+            {
+               <tr>
+                    <td>@history.RepairId</td>
+                    <td>@history.Name</td>
+                    <td>@history.Model</td>
+                    <td>@history.RepairStart</td>
+                    <td>@history.RepairFinish</td>
+                    <td>@history.Status</td>
+                    <td>
+                        <a asp-action="EquipmentHistoryDetails" asp-controller="User" asp-route-repairId="@history.RepairId">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
