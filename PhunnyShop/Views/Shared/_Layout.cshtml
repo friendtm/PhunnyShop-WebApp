@@ -37,15 +37,11 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Account"
-                                   asp-action="Profile"
+                                   asp-action="Index"
                                    asp-route-email="@User.Identity.Name"
                                    class="btn btn-primary">
-                                    Profile
+                                    Área Pessoal
                                 </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">Área Cliente</a>
                             </li>
 
                             <form asp-controller="Account" asp-action="Logout" method="POST" class="form-inline">

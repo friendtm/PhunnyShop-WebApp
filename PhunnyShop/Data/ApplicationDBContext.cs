@@ -11,7 +11,7 @@
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PhunnyShop.Models;  // Import nos Models para os utilizar nos 'DbSet'.
+using PhunnyShop.Models;
 
 namespace PhunnyShop.Data
 {
@@ -23,6 +23,8 @@ namespace PhunnyShop.Data
         }
 
         public DbSet<Category> Categories { get; set; }  // Category é o nosso ficheiro 'Category.cs'. 'Categories' será o nome da tabela.
+        public DbSet<EquipmentRepair> EquipmentRepairs { get; set; }
+        public DbSet<RepairHistory> RepairsHistory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

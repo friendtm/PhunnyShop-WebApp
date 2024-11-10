@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PhunnyShop.Models
+namespace PhunnyShop.Models.LoginRegister
 {
     public class RegisterViewModel
     {
@@ -15,8 +15,8 @@ namespace PhunnyShop.Models
         public string Email { get; set; }
 
         [Display(Name = "Contacto")]
-        public string Contact {  get; set; }
-        
+        public string Contact { get; set; }
+
         /*
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]

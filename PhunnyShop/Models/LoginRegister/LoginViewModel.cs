@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace PhunnyShop.Models
+namespace PhunnyShop.Models.LoginRegister
 {
     public class LoginViewModel
     {

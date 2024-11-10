@@ -1,4 +1,4 @@
-﻿namespace PhunnyShop.Models
+﻿namespace PhunnyShop.Models.LoginRegister
 {
     public class LoginRegisterView
     {

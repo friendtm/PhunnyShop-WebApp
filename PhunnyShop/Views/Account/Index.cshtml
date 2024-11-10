@@ -1,6 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<h1>Account Index</h1>
+﻿@model PhunnyShop.Models.Account.UserEquipmentView
+
+<div class="container">
+    <div class="row pt-4 mb-2">
+        <div class="col-6">
+            <h2 class="text-primary">ÁREA PESSOAL</h2>
+        </div>
+        <div class="col-6 text-end">
+            <!-- <a class="btn btn-outline-primary" asp-controller="User" asp-action="Index"><i class="bi bi-eye"></i>Equipamentos</a> -->
+            <a class="btn btn-outline-danger" asp-controller="User" asp-action="Subscriptions"><i class="bi bi-award"></i> Subscrições</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Dados Pessoais</h4>
+                    <div class="card-body">
+                        <p class="card-text"><b>Nome: </b><i>@Model.User.FirstName</i></p>
+                        <p class="card-text"><b>Contacto: </b><i>+351 @Model.User.Contact</i></p>
+                        <p class="card-text"><b>Email: </b><i>@Model.User.Email</i></p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Editar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reparações Ativas</h5>
+                    @if (Model.EquipmentRepairs != null && Model.EquipmentRepairs.Any())
+                    {
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Equipamento</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var repair in Model.EquipmentRepairs)
+                                {
+                                    <tr>
+                                        <th scope="row">@repair.Id</th>
+                                        <td>@repair.Model</td>
+                                        <td>@repair.Status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>Sem Equipamentos em Reparação</p>
+                    }
+                    <p class="card-text"></p>
+                    <a asp-controller="User" asp-action="Index" asp-route-email="@User.Identity.Name" class="btn btn-primary">Ver Reparações</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

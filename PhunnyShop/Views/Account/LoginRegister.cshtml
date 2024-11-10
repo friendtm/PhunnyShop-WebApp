@@ -1,4 +1,4 @@
-﻿@model PhunnyShop.Models.LoginRegisterView
+﻿@model PhunnyShop.Models.LoginRegister.LoginRegisterView
 
 <!--
 <div class="container">
@@ -43,30 +43,30 @@
             <hr />
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.LoginModel.Email"><b>Email</b></label>
                 <input class="form-control" asp-for="@Model.LoginModel.Email" placeholder="Email"/>
-                <!-- <label class="form-label" asp-for="Email">Email</label> -->
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" asp-for="@Model.LoginModel.Password"><b>Password</b></label>
                 <input class="form-control" asp-for="@Model.LoginModel.Password" type="password" placeholder="Password" />
-                <!-- <label class="form-label" asp-for="Password">Password</label> -->
             </div>
 
             <!-- 2 column grid layout -->
             <div class="row mb-4">
+                 
                 <div class="col-md-6 d-flex justify-content-center">
                     <!-- Checkbox -->
                     <div class="form-check mb-3 mb-md-0">
                         <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                        <label class="form-check-label" for="loginCheck">Lembrar-me</label>
                     </div>
                 </div>
-
-                <div class="col-md-6 d-flex justify-content-center">
-                    <!-- Simple link -->
+                
+                <!-- <div class="col-md-6 d-flex justify-content-center">
                     <p>Ainda não és membro? <a href="#!">Criar conta</a></p>
-                </div>
+            </div> --> 
             </div>
 
             <!-- Submit button -->
@@ -80,43 +80,43 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <!-- First Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" asp-for="@Model.RegisterModel.FirstName">First Name</label>
-                <input class="form-control" asp-for="@Model.RegisterModel.FirstName" />
+                <label class="form-label" asp-for="@Model.RegisterModel.FirstName"><b>Nome</b></label>
+                <input class="form-control" asp-for="@Model.RegisterModel.FirstName" placeholder="Nome" />
                 <span asp-validation-for="@Model.RegisterModel.FirstName"></span>
             </div>
 
             <!-- Last Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" asp-for="@Model.RegisterModel.LastName">Last Name</label>
-                <input class="form-control" asp-for="@Model.RegisterModel.LastName" />
+                <label class="form-label" asp-for="@Model.RegisterModel.LastName"><b>Apelido</b></label>
+                <input class="form-control" asp-for="@Model.RegisterModel.LastName" placeholder="Apelido" />
                 <span asp-validation-for="@Model.RegisterModel.LastName"></span>
             </div>
 
             <!-- Contact input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" asp-for="@Model.RegisterModel.Contact">Phone</label>
-                <input class="form-control" asp-for="@Model.RegisterModel.Contact" />
+                <label class="form-label" asp-for="@Model.RegisterModel.Contact"><b>Contacto</b></label>
+                <input class="form-control" asp-for="@Model.RegisterModel.Contact" placeholder="Contacto" />
                 <span asp-validation-for="@Model.RegisterModel.Contact"></span>
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" asp-for="@Model.RegisterModel.Email">Email</label>
-                <input class="form-control" asp-for="@Model.RegisterModel.Email" />
+                <label class="form-label" asp-for="@Model.RegisterModel.Email"><b>Email</b></label>
+                <input class="form-control" asp-for="@Model.RegisterModel.Email" placeholder="Email" />
                 <span asp-validation-for="@Model.RegisterModel.Email"></span>
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" asp-for="@Model.RegisterModel.Password">Password</label>
-                <input class="form-control" asp-for="@Model.RegisterModel.Password" />
+                <label class="form-label" asp-for="@Model.RegisterModel.Password"><b>Password</b></label>
+                <input class="form-control" asp-for="@Model.RegisterModel.Password" placeholder="Password" />
                 <span asp-validation-for="@Model.RegisterModel.Password"></span>
             </div>
 
             <!-- Repeat Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" asp-for="@Model.RegisterModel.ConfirmPassword">Repeat Password</label>
-                <input class="form-control" asp-for="@Model.RegisterModel.ConfirmPassword" />
+                <label class="form-label" asp-for="@Model.RegisterModel.ConfirmPassword"><b>Confirmar Password</b></label>
+                <input class="form-control" asp-for="@Model.RegisterModel.ConfirmPassword" placeholder="Confirmar Password" />
                 <span asp-validation-for="@Model.RegisterModel.ConfirmPassword"></span>
             </div>
 
